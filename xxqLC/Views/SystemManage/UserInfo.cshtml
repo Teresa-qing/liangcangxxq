@@ -1,0 +1,161 @@
+﻿
+@{
+    Layout = null;
+    List<UserInfo> listUserInfo = Session["listui"] as List<UserInfo>;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>UserInfo</title>
+    <link href="../layui/css/layui.css" rel="stylesheet" />
+
+</head>
+<body class="layui-card-body">
+    <div class="layui-card"> 
+        <form class="layui-form" action="" lay-filter="form">
+            <div class="layui-form layui-card-header layuiadmin-card-header-auto">
+                <div class="layui-form-item">
+                  <div class="layui-inline">
+                        <label class="layui-form-label">是否有效:</label>
+                        <div class="layui-input-inline">
+                            <div class="layui-col-md12">
+                                <select name="city" lay-verify="">
+                                    <option value="">请选择</option>
+                                    <option value="1">是</option>
+                                    <option value="2">否</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">用户名:</label>
+                        <div class="layui-input-inline">
+                            <input type="text" id="search_name" placeholder="请输入" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">创建时间:</label>
+                        <div class="layui-input-inline">
+                            <input type="text" class="layui-input" id="test-laydate-range-date" placeholder=" - ">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <input type="button" value="搜索" id="search" class="layui-btn layuiadmin-btn-comm" data-type="reload" lay-submit lay-filter="LAY-app-contcomm-search" />
+                    </div>
+
+                </div>
+            </div>
+        </form>
+        <table id="test-table-page" class="layui-hide" test-table-page lay-filter="tableData" >
+            <thead>
+                <tr>
+                <td>ID</td>
+                <td>用户名</td>
+                <td>姓名</td>
+                <td>电话</td>
+                <td>邮箱</td>
+                <td>创建时间</td>
+                <td>是否有效</td>
+                <td>注销时间</td>
+                <td>备注</td>
+                </tr>
+            </thead>
+            <tbody>
+                @if (listUserInfo != null && listUserInfo.Count>0)
+                {
+                    foreach (UserInfo ui in listUserInfo)
+                    {
+                        <tr>
+                            <td>@ui.Id</td>
+                            <td>@ui.UserName</td>
+                            <td>@ui.Name</td>
+                            <td>@ui.Phone</td>
+                            <td>@ui.Email</td>
+                            <td>@ui.UserCreatDate</td>
+                            <td>@ui.IsEffective</td>
+                            <td>@ui.UserLogout</td>
+                            <td>@ui.UserRemark</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+        <div id="test-laypage-demo1"></div>
+    </div>
+   
+        <script src="../layuiadmin/layui/layui.js"></script>
+        <script>
+            layui.config({
+                base: '../layuiadmin/'
+            }).extend({
+                index: 'lib/index'
+            }).use(['index', 'layer', 'table', 'laydate', 'laypage'], function () {
+                var $ = layui.jquery;
+                var admin = layui.admin;
+                var table = layui.table;
+                var layer = layui.layer;
+                var form = layui.form;
+                var laydate = layui.laydate;
+                var laypage = layui.laypage;
+
+                //日期范围
+                laydate.render({
+                    elem: '#test-laydate-range-date'
+                  , range: true
+                });
+
+                laypage.render({
+                    elem: 'test-laypage-demo1'
+                  , count: 70 //数据总数
+                  , jump: function (obj) {
+                      console.log(obj)
+                  }
+                });
+
+                table.render({
+                    elem: '#test-table-page'
+                    , url: '/SystemManageController/UserInfo'
+                    //,cols: [[
+                    //    {"field":"Id","title":"ID","colspan":1,"minWidth":100,"align":"center","rowspan":1},
+                    //    {"field":"UserName","title":"用户名","colspan":1,"minWidth":80,"align":"center","rowspan":1},
+                    //    {"field":"Name","title":"姓名","colspan":1,"minWidth":80,"align":"center","rowspan":1},
+                    //    {"field":"Phone","title":"电话","colspan":1,"minWidth":100,"align":"center","rowspan":1},
+                    //    {"field":"Email","title":"邮箱","colspan":1,"minWidth":100,"align":"center","rowspan":1},
+                    //    {"field":"IsEffective","title":"是否有效","colspan":1,"minWidth":50,"align":"center","rowspan":1},
+                    //    {"field":"UserCreatDate","title":"创建时间","colspan":1,"minWidth":200,"align":"center","rowspan":1},
+                    //    {"field":"UserLogout","title":"注销时间","colspan":1,"minWidth":200,"align":"center","rowspan":1},
+                    //    {"field":"UserRemark","title":"备注","colspan":1,"minWidth":100,"align":"center","rowspan":1},
+                    //    {templet: '#auth-state', width: 220, align: 'center', title: '操作'}]]
+                    , page: true
+                    , totalRow: true
+                    , toolbar: true
+                    , id: 'testReload'
+                });
+
+                $('#search').on('click', function () {
+                    var type = $(this).data('type');
+                    active[type] ? active[type].call(this) : '';
+                });
+
+                var $ = layui.$, active = {
+                    reload: function () {
+                        var category = $('#search_name');
+                        table.reload('testReload', {
+                            page: {
+                                curr: 1 //重新从第 1 页开始
+                            },
+                            where: {
+                                category: category.val()
+                            }
+                        });
+                    }
+                };
+
+            });
+
+        </script>
+</body>
+</html>

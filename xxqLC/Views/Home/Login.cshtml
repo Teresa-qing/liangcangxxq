@@ -1,0 +1,64 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="../layui/css/layui.css" rel="stylesheet" />
+    <title>登录界面</title>
+</head>
+<body style="background-color:#56482e;">
+    <center>
+        <div style="background-image:url(../../Images/login.png); height:600px; width:800px; ">
+                <form style="padding-top:200px;">
+                    <center><label style="font-family:Arial;font-size:30px;color:#48280f;">登录</label></center>
+                    
+                    <div style="height:50px; line-height:50px;"><span><label>UserName：</label><input type="text" id="name" /></span></div>
+                    <div style="height:50px; line-height:50px;"><span><label>Password：&nbsp;&nbsp;</label><input type="password" id="pwd" /></span></div>
+
+                    <div style="height:50px; line-height:50px;">
+                        <span>
+                            <input type="button" id="login" value="登录" onclick="javascript: window.location.href = '../SharePersonal/Index'"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type="button"  id="register" data-type="register" value="注册" />
+                        </span>
+                    </div>
+
+                    <div style="margin-left:600px;margin-top:115px;"><input type="button" id="sysLogin" value="sysLogin" style="background-color:transparent;border:0px;" onclick="javascript: window.location.href = '../Home/SysLogin'"/></div>
+                </form>
+        </div>
+    </center>
+    <script src="../layuiadmin/layui/layui.js"></script>
+    <script>
+    layui.config({
+        base: '../layuiadmin/'
+    }).extend({
+        index: 'lib/index'
+    }).use(['index', 'layer'], function () {
+        var $ = layui.jquery;
+        var admin = layui.admin;
+        var layer = layui.layer;
+
+        var active = {
+            register: function () {
+                layer.open({
+                    title: '注册'
+                         , type: 2
+                         , shadeClose: true
+                         , area: admin.screen() < 2 ? ['80%', '300px'] : ['700px', '500px']
+                         , content: "@Url.Action("Register","Home")"
+                });
+            }
+        }
+        $('#register').on('click', function () {
+            var type = $(this).data('type');
+            active[type] && active[type].call(this);
+        });
+
+      });
+    </script>
+</body>
+</html>

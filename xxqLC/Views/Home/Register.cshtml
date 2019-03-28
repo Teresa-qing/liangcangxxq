@@ -1,0 +1,91 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="../layui/css/layui.css" rel="stylesheet" />
+    <title>Register</title>
+</head>
+<body class="layui-body">
+    <div style="padding-top:20px;">
+        <form class="layui-form" id="form1">
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                        <label class="layui-form-label">用户名:</label>
+                        <div class="layui-input-inline">
+                            <input type="text" id="userName" name="userName" placeholder="请输入用户名" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">密码:</label>
+                    <div class="layui-input-inline">
+                        <input type="password" id="pwd" name="pwd" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">确认密码:</label>
+                    <div class="layui-input-inline">
+                        <input type="password" id="pwd2" placeholder="请输入相同的密码" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">真实姓名:</label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="name" name="name" placeholder="请输入真实姓名" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">电话:</label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="phone" placeholder="请输入联系电话" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">邮箱:</label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="email" placeholder="请输入邮箱" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-input-inline btn-xs" style="margin-top:40px;">
+                        <input type="submit" value="确定注册" id="sure" onclick="Register();" class="layui-btn" />
+                </div>
+            </div>
+        </form> 
+    </div>
+    <script>
+        function Register() {
+            var username = document.getElementById("userName").value;
+            var pwd = document.getElementById("pwd").value;
+            var pwd2 = document.getElementById("pwd2").value;
+            if (username.toString().trim() == null || pwd.toString().trim() == null)
+            {
+                alert("用户名和密码不能为空！");
+                return;
+            }
+            if (pwd != pwd2)
+            {
+                alert("两次密码不一致！");
+                return;
+            }
+            $.ajax({
+                url: "/Home/RegisterAdd",
+                data: {
+                    username: $("input[name=username]").val(),
+                    pwd: $("input[name=pwd]").val(),
+                    name:$("input[name=name]").val()
+                },
+                success: function () {
+                    alert("注册成功");
+                }
+                
+            });
+
+        };
+    </script>
+</body>
+</html>

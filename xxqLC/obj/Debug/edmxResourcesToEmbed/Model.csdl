@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="xxqLCDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ContentInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UserId" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TypeId" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ContentText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ContentPublic" Type="Boolean" Nullable="false" />
+    <Property Name="ContentCreatDate" Type="DateTime" Precision="3" />
+    <Property Name="IsDel" Type="Boolean" Nullable="false" />
+    <Property Name="DeleteDate" Type="DateTime" Precision="3" />
+    <Property Name="IsManuscript" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="ContentType" Relationship="Self.FK__ContentIn__TypeI__35BCFE0A" FromRole="ContentInfo" ToRole="ContentType" />
+    <NavigationProperty Name="UserInfo" Relationship="Self.FK__ContentIn__UserI__34C8D9D1" FromRole="ContentInfo" ToRole="UserInfo" />
+    <NavigationProperty Name="MessageBoard" Relationship="Self.FK__MessageBo__Conte__3C69FB99" FromRole="ContentInfo" ToRole="MessageBoard" />
+  </EntityType>
+  <EntityType Name="ContentType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IsEffective" Type="Boolean" Nullable="false" />
+    <Property Name="CreateDatetime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IsDel" Type="Boolean" Nullable="false" />
+    <Property Name="DeleteDate" Type="DateTime" Precision="3" />
+    <Property Name="Remark" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ContentInfo" Relationship="Self.FK__ContentIn__TypeI__35BCFE0A" FromRole="ContentType" ToRole="ContentInfo" />
+  </EntityType>
+  <EntityType Name="LoginLog">
+    <Key>
+      <PropertyRef Name="LoginLogId" />
+    </Key>
+    <Property Name="LoginLogId" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LoginUserId" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LoginDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LoginIP" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LoginIsEnter" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="UserInfo" Relationship="Self.FK__LoginLog__LoginU__403A8C7D" FromRole="LoginLog" ToRole="UserInfo" />
+  </EntityType>
+  <EntityType Name="MessageBoard">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UserId" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ContentId" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MessageText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreatDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="ContentInfo" Relationship="Self.FK__MessageBo__Conte__3C69FB99" FromRole="MessageBoard" ToRole="ContentInfo" />
+    <NavigationProperty Name="UserInfo" Relationship="Self.FK__MessageBo__UserI__3B75D760" FromRole="MessageBoard" ToRole="UserInfo" />
+  </EntityType>
+  <EntityType Name="OperateLog">
+    <Key>
+      <PropertyRef Name="OperateLogId" />
+    </Key>
+    <Property Name="OperateLogId" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="OperateUserId" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="OperateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="OperateName" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="OperateContent" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="UserInfo" Relationship="Self.FK__OperateLo__Opera__440B1D61" FromRole="OperateLog" ToRole="UserInfo" />
+  </EntityType>
+  <EntityType Name="UserInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UserPwd" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IsEffective" Type="Boolean" Nullable="false" />
+    <Property Name="UserCreatDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UserLogout" Type="DateTime" Precision="3" />
+    <Property Name="UserRemark" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ContentInfo" Relationship="Self.FK__ContentIn__UserI__34C8D9D1" FromRole="UserInfo" ToRole="ContentInfo" />
+    <NavigationProperty Name="LoginLog" Relationship="Self.FK__LoginLog__LoginU__403A8C7D" FromRole="UserInfo" ToRole="LoginLog" />
+    <NavigationProperty Name="MessageBoard" Relationship="Self.FK__MessageBo__UserI__3B75D760" FromRole="UserInfo" ToRole="MessageBoard" />
+    <NavigationProperty Name="OperateLog" Relationship="Self.FK__OperateLo__Opera__440B1D61" FromRole="UserInfo" ToRole="OperateLog" />
+  </EntityType>
+  <Association Name="FK__ContentIn__TypeI__35BCFE0A">
+    <End Role="ContentType" Type="Self.ContentType" Multiplicity="1" />
+    <End Role="ContentInfo" Type="Self.ContentInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ContentType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ContentInfo">
+        <PropertyRef Name="TypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ContentIn__UserI__34C8D9D1">
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+    <End Role="ContentInfo" Type="Self.ContentInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ContentInfo">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__MessageBo__Conte__3C69FB99">
+    <End Role="ContentInfo" Type="Self.ContentInfo" Multiplicity="1" />
+    <End Role="MessageBoard" Type="Self.MessageBoard" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ContentInfo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MessageBoard">
+        <PropertyRef Name="ContentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__LoginLog__LoginU__403A8C7D">
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+    <End Role="LoginLog" Type="Self.LoginLog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LoginLog">
+        <PropertyRef Name="LoginUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__MessageBo__UserI__3B75D760">
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+    <End Role="MessageBoard" Type="Self.MessageBoard" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MessageBoard">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OperateLo__Opera__440B1D61">
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+    <End Role="OperateLog" Type="Self.OperateLog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OperateLog">
+        <PropertyRef Name="OperateUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="xxqLCDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ContentInfo" EntityType="Self.ContentInfo" />
+    <EntitySet Name="ContentType" EntityType="Self.ContentType" />
+    <EntitySet Name="LoginLog" EntityType="Self.LoginLog" />
+    <EntitySet Name="MessageBoard" EntityType="Self.MessageBoard" />
+    <EntitySet Name="OperateLog" EntityType="Self.OperateLog" />
+    <EntitySet Name="UserInfo" EntityType="Self.UserInfo" />
+    <AssociationSet Name="FK__ContentIn__TypeI__35BCFE0A" Association="Self.FK__ContentIn__TypeI__35BCFE0A">
+      <End Role="ContentType" EntitySet="ContentType" />
+      <End Role="ContentInfo" EntitySet="ContentInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ContentIn__UserI__34C8D9D1" Association="Self.FK__ContentIn__UserI__34C8D9D1">
+      <End Role="UserInfo" EntitySet="UserInfo" />
+      <End Role="ContentInfo" EntitySet="ContentInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__MessageBo__Conte__3C69FB99" Association="Self.FK__MessageBo__Conte__3C69FB99">
+      <End Role="ContentInfo" EntitySet="ContentInfo" />
+      <End Role="MessageBoard" EntitySet="MessageBoard" />
+    </AssociationSet>
+    <AssociationSet Name="FK__LoginLog__LoginU__403A8C7D" Association="Self.FK__LoginLog__LoginU__403A8C7D">
+      <End Role="UserInfo" EntitySet="UserInfo" />
+      <End Role="LoginLog" EntitySet="LoginLog" />
+    </AssociationSet>
+    <AssociationSet Name="FK__MessageBo__UserI__3B75D760" Association="Self.FK__MessageBo__UserI__3B75D760">
+      <End Role="UserInfo" EntitySet="UserInfo" />
+      <End Role="MessageBoard" EntitySet="MessageBoard" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OperateLo__Opera__440B1D61" Association="Self.FK__OperateLo__Opera__440B1D61">
+      <End Role="UserInfo" EntitySet="UserInfo" />
+      <End Role="OperateLog" EntitySet="OperateLog" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

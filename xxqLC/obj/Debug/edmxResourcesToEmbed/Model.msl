@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="xxqLCDBModelStoreContainer" CdmEntityContainer="xxqLCDBEntities">
+    <EntitySetMapping Name="ContentInfo">
+      <EntityTypeMapping TypeName="xxqLCDBModel.ContentInfo">
+        <MappingFragment StoreEntitySet="ContentInfo">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+          <ScalarProperty Name="ContentText" ColumnName="ContentText" />
+          <ScalarProperty Name="ContentPublic" ColumnName="ContentPublic" />
+          <ScalarProperty Name="ContentCreatDate" ColumnName="ContentCreatDate" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="DeleteDate" ColumnName="DeleteDate" />
+          <ScalarProperty Name="IsManuscript" ColumnName="IsManuscript" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ContentType">
+      <EntityTypeMapping TypeName="xxqLCDBModel.ContentType">
+        <MappingFragment StoreEntitySet="ContentType">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="IsEffective" ColumnName="IsEffective" />
+          <ScalarProperty Name="CreateDatetime" ColumnName="CreateDatetime" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="DeleteDate" ColumnName="DeleteDate" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LoginLog">
+      <EntityTypeMapping TypeName="xxqLCDBModel.LoginLog">
+        <MappingFragment StoreEntitySet="LoginLog">
+          <ScalarProperty Name="LoginLogId" ColumnName="LoginLogId" />
+          <ScalarProperty Name="LoginUserId" ColumnName="LoginUserId" />
+          <ScalarProperty Name="LoginDate" ColumnName="LoginDate" />
+          <ScalarProperty Name="LoginIP" ColumnName="LoginIP" />
+          <ScalarProperty Name="LoginIsEnter" ColumnName="LoginIsEnter" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MessageBoard">
+      <EntityTypeMapping TypeName="xxqLCDBModel.MessageBoard">
+        <MappingFragment StoreEntitySet="MessageBoard">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ContentId" ColumnName="ContentId" />
+          <ScalarProperty Name="MessageText" ColumnName="MessageText" />
+          <ScalarProperty Name="CreatDate" ColumnName="CreatDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OperateLog">
+      <EntityTypeMapping TypeName="xxqLCDBModel.OperateLog">
+        <MappingFragment StoreEntitySet="OperateLog">
+          <ScalarProperty Name="OperateLogId" ColumnName="OperateLogId" />
+          <ScalarProperty Name="OperateUserId" ColumnName="OperateUserId" />
+          <ScalarProperty Name="OperateDate" ColumnName="OperateDate" />
+          <ScalarProperty Name="OperateName" ColumnName="OperateName" />
+          <ScalarProperty Name="OperateContent" ColumnName="OperateContent" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserInfo">
+      <EntityTypeMapping TypeName="xxqLCDBModel.UserInfo">
+        <MappingFragment StoreEntitySet="UserInfo">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserPwd" ColumnName="UserPwd" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="IsEffective" ColumnName="IsEffective" />
+          <ScalarProperty Name="UserCreatDate" ColumnName="UserCreatDate" />
+          <ScalarProperty Name="UserLogout" ColumnName="UserLogout" />
+          <ScalarProperty Name="UserRemark" ColumnName="UserRemark" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,31 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>administrator登录</title>
+</head>
+<body>
+    <center>
+        <div style="background-image:url(../../Images/sysLoginbg.jpg);width:800px;height:600px;background-repeat:no-repeat;">
+            <form style="padding-top:200px;">
+                <label style="font-family:Arial;font-size:30px;color:#48280f;margin-left:-150px;">登录</label>
+
+                <div style="height:50px; line-height:50px;margin-left:-180px;"><span><label>UserName：</label><input type="text" id="name" style="width:200px;" /></span></div>
+                <div style="height:50px; line-height:50px;margin-left:-180px;"><span><label>Password：&nbsp;&nbsp;</label><input type="password" id="pwd" style="width:200px;" /></span></div>
+
+                <div style="height:50px; line-height:50px;">
+                    <span>
+                        <input type="button" id="login" value="登录" onclick="javascript: window.location.href = '../SystemManage/Index'" />
+                    </span>
+                </div>
+            </form>
+        </div>
+    </center>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="40d6c53e6eb4458d835a04f074544f60" Name="Diagram1">
+        <EntityTypeShape EntityType="xxqLCDBModel.ContentInfo" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="xxqLCDBModel.ContentType" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="xxqLCDBModel.LoginLog" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="xxqLCDBModel.MessageBoard" Width="1.5" PointX="5.25" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="xxqLCDBModel.OperateLog" Width="1.5" PointX="3" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="xxqLCDBModel.UserInfo" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
+        <AssociationConnector Association="xxqLCDBModel.FK__ContentIn__TypeI__35BCFE0A" ManuallyRouted="false" />
+        <AssociationConnector Association="xxqLCDBModel.FK__ContentIn__UserI__34C8D9D1" ManuallyRouted="false" />
+        <AssociationConnector Association="xxqLCDBModel.FK__MessageBo__Conte__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="xxqLCDBModel.FK__LoginLog__LoginU__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="xxqLCDBModel.FK__MessageBo__UserI__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="xxqLCDBModel.FK__OperateLo__Opera__440B1D61" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
